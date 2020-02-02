@@ -1,11 +1,10 @@
+
 <template>
-  <div class="settings">
-    <SettingsMenu />
-    <div style="display:flex;flex-direction:column">
-      <Timer />
+  <div class="settings" style="display:flex;height:100%">
+    <SettingsMenu :options="options"/>
+    <Timer />
       <Errorless />
       <UploadFile />
-    </div>
   </div>
 </template>
 
@@ -20,8 +19,7 @@
 <script>
   import SettingsMenu from '../components/layout/SettingsMenu';
   import Timer from '../components/settings/Timer';
-  import Errorless from '../components/settings/Errorless';
-  import UploadFile from '../components/UploadFile';
+    import SettingsLinks from '@/views/SettingsLinks.js';
   
   export default {
     name: "Settings",
@@ -30,6 +28,12 @@
       Timer,
       Errorless,
       UploadFile
+    },
+    data : function(){
+        return {
+            // Needs to be copy and pasted for each of the settings page
+            'options' : SettingsLinks,
+        }
     }
   }
 </script>
