@@ -169,9 +169,6 @@
         isHidden: false,
         errorless: false,
         audio : new Audio(require('@/assets/correct.mp3')),
-          settings: {
-              timer : 1
-          }
       }
     },
     computed : {
@@ -199,10 +196,8 @@
           this.output = "";
           this.audio.play();
           
-          // Ths is the timer setting, time is in milliseconds
-            // This should be where the if statement checking if the timer is set to zero should be added.
           this.isHidden = false;
-          setTimeout(this.hide, this.timer * 1000);
+          setTimeout(this.hide, 3000);
           if (this.index == this.wordlist.length) {
             this.index = 0;
             this.output = "YOU WIN!!";
@@ -210,16 +205,11 @@
         }
       },
       hide() {
-        this.isHidden = true;
-          // This is where the true/false is set.
-          // If true then time is on, if false the timer off
+//        this.isHidden = true;
       }
     },
     created() {
-        if(this.$cookies.isKey('settings.timer')){
-            this.timer = this.$cookies.get('settings.timer')
-        }
-        setTimeout(this.hide, this.timer * 1000);
+      setTimeout(this.hide, 5000);
     }
   }
 </script>
